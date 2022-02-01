@@ -14,4 +14,16 @@ export class MoneyEntity {
   public get amount(): BigNumber {
     return this._amount;
   }
+
+  static add(a: MoneyEntity, b: MoneyEntity): MoneyEntity {
+    return new MoneyEntity(a.amount.plus(b.amount));
+  }
+
+  public negate() {
+    return new MoneyEntity(this.amount.negated());
+  }
+
+  public isPositiveOrZero(): boolean {
+    return this.amount.comparedTo(0) >= 0;
+  }
 }
