@@ -44,6 +44,7 @@ export class AccountEntity {
     this._activityWindow.addActivity(withdrawal);
     return true;
   }
+
   public deposit(money: MoneyEntity, sourceAccountId: AccountId) {
     const deposit: ActivityEntity = new ActivityEntity(
       sourceAccountId,

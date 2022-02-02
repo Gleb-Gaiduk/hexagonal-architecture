@@ -1,0 +1,12 @@
+import { AccountId } from './../entities/account.entity';
+import { GetAccountBalanceQuery } from './../ports/in/get-account-balance.query';
+import { LoadAccountPort } from './../ports/out/load-account.port';
+
+export class GetAccountBalanceService implements GetAccountBalanceQuery {
+  // here we are connecting "in-port" with "out-port"
+  constructor(private readonly _loadAccountPort: LoadAccountPort) {}
+
+  getAccountBalance(accountId: AccountId) {
+    this._loadAccountPort.loadAccount(accountId).calculateBalance();
+  }
+}
